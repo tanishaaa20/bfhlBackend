@@ -19,14 +19,20 @@ server.post("/bfhl", (req, res) => {
     };
 
     details.forEach((ele) => {
-      const no = parseInt(ele);
-      if (no != NaN) {
-        if (no % 2 !== 0) {
-          data.odd_numbers.push(no.toString());
-        } else {
+      let no = NaN;
+      try {
+        no = parseInt(ele)
+      } catch (error) {
+        
+      }
+      if (!isNaN(no)) {
+        if (no % 2 == 0) {
           data.even_numbers.push(no.toString());
+        } else if(no%2 == 1){
+          data.odd_numbers.push(no.toString());
         }
-      } else {
+      } 
+      else {
         data.alphabets.push(ele.toUpperCase());
       }
     });
