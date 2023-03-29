@@ -6,7 +6,7 @@ server.use(express.urlencoded({extended : false}))
 
 server.post("/bfhl", (req, res) => {
   try {
-    const details = JSON.parse(req.body.data);
+    const details = req.body.data
 
     const data = {
       is_success: false,
